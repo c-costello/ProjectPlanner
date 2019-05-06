@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ReactPlanner.Data;
 
 namespace ReactPlanner
 {
@@ -24,6 +26,10 @@ namespace ReactPlanner
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(Configuration["ConnectionStrings:IdentityDefaultConnection"]));
+            services.AddDbContext<PlannerDbContext>(options =>
+                options.UseSqlServer(Configuration["ConnectionStrings:PlannerDefaultConnection"]));
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
