@@ -12,8 +12,21 @@ export class Account extends React.Component {
             .then(response => response.json())
             .then(data => this.setState({loading: false, login: data}))
     }
+    loginBox(status) {
+        if (status) {
+            return <p> Logged In </p>
+        }
+        else {
+            return <p> Not logged in </p>
+        }
+    }
+
 
     render() {
+        let contents = this.state.loading
+            ? <p><em>Loading...</em></p>
+            : Account.loginBox(this.state.login);
+
         return (
             <div id="account-box">
             </div>
