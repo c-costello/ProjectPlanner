@@ -12,5 +12,7 @@ namespace ReactPlanner.Data
         {
 
         }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<ToDo> ToDos { get; set; }
     }
 }
