@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ReactPlanner.Models;
+using ReactPlanner.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,16 +21,22 @@ namespace ReactPlanner.Controllers
         }
 
         [HttpGet("[action]")]
-        public bool LoginCheck()
+        public LoginCheckViewModel LoginCheck()
         {
+            LoginCheckViewModel lcvm = new LoginCheckViewModel();
             if (_SignInManager.IsSignedIn(User))
             {
-                return true;
+                lcvm.isLoggedIn = true;
+                lcvm.FullName = User.Claims.First(name => name.Type == "FullName").Value;
+                
             }
             else
             {
-                return false;
+                lcvm.isLoggedIn = false;
+                lcvm.FullName = null;
+
             }
+            return lcvm;
         }
     }
 }
