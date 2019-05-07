@@ -39,5 +39,23 @@ namespace ReactPlanner.Controllers
             }
             return lcvm;
         }
+
+        [HttpPost("[action]")]
+        public async Task<LoginCheckViewModel> Login(LoginViewModel lvm)
+        {
+            LoginCheckViewModel lcvm = new LoginCheckViewModel();
+            Microsoft.AspNetCore.Identity.SignInResult result = await _SignInManager.PasswordSignInAsync(lvm.Username, lvm.Password, false, false);
+            if ( result.Succeeded)
+            {
+                lcvm.isLoggedIn = true;
+                lcvm.FullName = "ClariceCostello";
+                bool check = _SignInManager.IsSignedIn(User);
+                return lcvm;
+            }
+            lcvm.isLoggedIn = false;
+            lcvm.FullName = null;
+            return lcvm;
+
+        }
     }
 }
