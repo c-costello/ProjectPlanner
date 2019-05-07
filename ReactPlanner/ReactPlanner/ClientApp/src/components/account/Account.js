@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
 import { Login } from './Login';
+import { Logout } from './Logout';
 
 export class Account extends React.Component {
     constructor(props) {
@@ -17,7 +18,13 @@ export class Account extends React.Component {
 
     static loginBox(status) {
         if (status) {
-            return <p> Logged In </p>
+            return (
+                <div>
+                    <p> Logged In </p>
+                    <Logout />
+                </div>
+                )
+            
         }
         else {
             return (
