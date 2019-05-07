@@ -57,5 +57,15 @@ namespace ReactPlanner.Controllers
             return lcvm;
 
         }
+
+        [HttpGet("[action]")]
+        public async Task<LoginCheckViewModel> LogOut()
+        {
+            await _SignInManager.SignOutAsync();
+            LoginCheckViewModel lcvm = new LoginCheckViewModel();
+            lcvm.isLoggedIn = false;
+            lcvm.FullName = null;
+            return lcvm;
+        }
     }
 }
