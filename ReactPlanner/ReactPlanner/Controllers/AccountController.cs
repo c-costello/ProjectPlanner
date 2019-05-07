@@ -57,5 +57,11 @@ namespace ReactPlanner.Controllers
             return lcvm;
 
         }
+
+        [HttpPost("[action]")]
+        public async Task LogOut()
+        {
+            await _SignInManager.SignOutAsync();
+        }
     }
 }
