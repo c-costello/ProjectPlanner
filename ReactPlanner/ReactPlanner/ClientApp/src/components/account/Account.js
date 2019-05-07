@@ -17,7 +17,7 @@ export class Account extends React.Component {
     }
     login(loginData) {
         const URL = "api/Account/Login"
-        let data = new formData();
+        let data = new FormData();
         data.append('Username', loginData.Username);
         data.append('Password', loginData.Password);
         fetch(URL, {
@@ -34,7 +34,7 @@ export class Account extends React.Component {
             return (
                 <div>
                     <p> Please Log In </p>
-                    <LoginForm formData={this.login}/>
+                    <LoginForm loginData={this.login}/>
                 </div>
             )
         }
