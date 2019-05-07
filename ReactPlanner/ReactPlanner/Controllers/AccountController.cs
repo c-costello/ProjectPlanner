@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ReactPlanner.Models;
+using ReactPlanner.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ReactPlanner.Controllers
 {
+    [Route("api/[controller]")]
     public class AccountController : Controller
     {
         private readonly SignInManager<ApplicationUser> _SignInManager;
@@ -17,6 +19,25 @@ namespace ReactPlanner.Controllers
         {
             _SignInManager = signInManager;
             _UserManager = userManager;
+        }
+
+        [HttpGet("[action]")]
+        public LoginCheckViewModel LoginCheck()
+        {
+            LoginCheckViewModel lcvm = new LoginCheckViewModel();
+            if (_SignInManager.IsSignedIn(User))
+            {
+                lcvm.isLoggedIn = true;
+                lcvm.FullName = User.Claims.First(name => name.Type == "FullName").Value;
+                
+            }
+            else
+            {
+                lcvm.isLoggedIn = false;
+                lcvm.FullName = null;
+
+            }
+            return lcvm;
         }
     }
 }
