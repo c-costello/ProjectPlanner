@@ -15,6 +15,17 @@ export class Account extends React.Component {
         console.log(this.state);
 
     }
+    login(loginData) {
+        const URL = "api/Account/Login"
+        let data = new formData();
+        data.append('Username', loginData.Username);
+        data.append('Password', loginData.Password);
+        fetch(URL, {
+            method: "Post",
+            body: data,
+        }).then(response => response.json())
+            .then(x => console.log(x));
+    }
     static loginBox(status) {
         if (status) {
             return <p> Logged In </p>
@@ -23,7 +34,7 @@ export class Account extends React.Component {
             return (
                 <div>
                     <p> Please Log In </p>
-                    <LoginForm />
+                    <LoginForm formData={this.login}/>
                 </div>
             )
         }
