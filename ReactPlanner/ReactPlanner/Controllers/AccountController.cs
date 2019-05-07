@@ -18,5 +18,18 @@ namespace ReactPlanner.Controllers
             _SignInManager = signInManager;
             _UserManager = userManager;
         }
+
+        [HttpGet("[action]")]
+        public bool LoginCheck()
+        {
+            if (_SignInManager.IsSignedIn(User))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
