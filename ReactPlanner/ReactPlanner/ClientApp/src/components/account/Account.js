@@ -10,9 +10,11 @@ export class Account extends React.Component {
         }
         fetch('api/Account/LoginCheck')
             .then(response => response.json())
-            .then(data => this.setState({loading: false, login: data}))
+            .then(data => this.setState({ loading: false, login: data.isLoggedIn, userData: data.FullName }));
+        console.log(this.state);
+
     }
-    loginBox(status) {
+    static loginBox(status) {
         if (status) {
             return <p> Logged In </p>
         }
@@ -29,6 +31,7 @@ export class Account extends React.Component {
 
         return (
             <div id="account-box">
+                {contents}
             </div>
             )
     }

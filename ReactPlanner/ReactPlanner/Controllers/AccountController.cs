@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ReactPlanner.Controllers
 {
+    [Route("api/[controller]")]
     public class AccountController : Controller
     {
         private readonly SignInManager<ApplicationUser> _SignInManager;
