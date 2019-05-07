@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import LoginForm from './LoginForm';
+import { Login } from './Login';
 
 export class Account extends React.Component {
     constructor(props) {
@@ -13,29 +13,15 @@ export class Account extends React.Component {
             .then(response => response.json())
             .then(data => this.setState({ loading: false, login: data.isLoggedIn, userData: data.FullName }));
         console.log(this.state);
+    }
 
-    }
-    login(loginData) {
-        const URL = "api/Account/Login"
-        let data = new FormData();
-        data.append('Username', loginData.Username);
-        data.append('Password', loginData.Password);
-        fetch(URL, {
-            method: "Post",
-            body: data,
-        }).then(response => response.json())
-            .then(x => console.log(x));
-    }
     static loginBox(status) {
         if (status) {
             return <p> Logged In </p>
         }
         else {
             return (
-                <div>
-                    <p> Please Log In </p>
-                    <LoginForm loginData={this.login}/>
-                </div>
+                <Login />
             )
         }
     }
@@ -48,8 +34,11 @@ export class Account extends React.Component {
 
         return (
             <div id="account-box">
-                {contents}
+                <div>
+                    {contents}
+                </div>
             </div>
             )
+                
     }
 }

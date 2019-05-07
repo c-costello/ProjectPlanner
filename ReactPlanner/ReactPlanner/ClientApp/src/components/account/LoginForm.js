@@ -1,17 +1,16 @@
 ﻿import React, { Component } from 'react';
 
-export default class LoginForm extends React.Component {
+export class LoginForm extends React.Component {
     constructor(props) {
         super(props)
         this.handleForm = this.handleForm.bind(this);
     }
 
     handleForm(e) {
-        this.props.loginData({
-            Username: e.target.Username.value,
-            Password: e.target.Password.value,
-        })
+        e.preventDefault();
+        this.props.formData({ Username: e.target.Username.value, Password: e.target.Password.value });
     }
+
     render() {
         return (
             <form onSubmit={this.handleForm} id="login-form">
