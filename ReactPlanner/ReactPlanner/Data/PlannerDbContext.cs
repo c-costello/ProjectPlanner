@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ReactPlanner.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace ReactPlanner.Data
         {
 
         }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<ToDo> ToDos { get; set; }
     }
 }
