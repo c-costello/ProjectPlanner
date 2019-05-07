@@ -3,11 +3,18 @@
 export default class LoginForm extends React.Component {
     constructor(props) {
         super(props)
+        this.handleForm = this.handleForm.bind(this);
     }
 
+    handleForm(e) {
+        this.props.loginData({
+            Username: e.target.Username.value,
+            Password: e.target.Password.value,
+        })
+    }
     render() {
         return (
-            <form id="login-form">
+            <form onSubmit={this.handleForm} id="login-form">
                 <label>UserName </label>
                 <input name="Username" required />
                 <label> Password </label>
