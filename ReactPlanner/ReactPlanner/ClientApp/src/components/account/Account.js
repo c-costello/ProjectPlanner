@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import LoginForm from './LoginForm';
 
 export class Account extends React.Component {
     constructor(props) {
@@ -19,7 +20,12 @@ export class Account extends React.Component {
             return <p> Logged In </p>
         }
         else {
-            return <p> Not logged in </p>
+            return (
+                <div>
+                    <p> Please Log In </p>
+                    <LoginForm />
+                </div>
+            )
         }
     }
 

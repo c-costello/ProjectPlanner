@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react';
 
-export class LoginForm extends React.Component {
+export default class LoginForm extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -14,6 +14,6 @@ export class LoginForm extends React.Component {
                 <input name="Password" type="password" required />
                 <button type="submit">Login</button>
             </form>
-            )
+        )
     }
 }
