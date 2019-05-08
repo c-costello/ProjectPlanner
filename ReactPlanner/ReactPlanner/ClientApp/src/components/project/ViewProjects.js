@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import { DeleteProject } from './DeleteProject';
 
 export class ViewProjects extends React.Component {
     constructor(props) {
@@ -14,10 +15,11 @@ export class ViewProjects extends React.Component {
             <h3> Current Projects </h3>
                 {projects.map(project =>
                     <div key={project.id}>
-                    <p><span>Title:</span> {project.title} </p>
-                    <p><span>Description:</span> {project.description} </p>
-                    <p><span>Final Due Date:</span> {project.finalDueDate} </p>
-                    <p><span>ID:</span> {project.id} </p>
+                        <p><span>Title:</span> {project.title} </p>
+                        <p><span>Description:</span> {project.description} </p>
+                        <p><span>Final Due Date:</span> {project.finalDueDate} </p>
+                        <p><span>ID:</span> {project.id} </p>
+                        <DeleteProject Delete={project.id} />    
                 </div>                    
                 )}
             </div>

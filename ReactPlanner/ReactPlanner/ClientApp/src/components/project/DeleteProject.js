@@ -4,7 +4,7 @@ export class DeleteProject extends React.Component {
     constructor(props) {
         super(props)
     }
-    DeleteProject(id) {
+    Delete(id) {
         const formData = new FormData();
         formData.append('ID', id);
         fetch('api/Project/DeleteProject', {
@@ -14,6 +14,6 @@ export class DeleteProject extends React.Component {
             .then(data => console.log(data));
     }
     render() {
-        return (<button onClick={this.DeleteProject}> Delete Project </button>);
+        return (<button onClick={this.Delete}> Delete Project </button>);
     }
 }
