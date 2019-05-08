@@ -3,10 +3,11 @@
 export class DeleteProject extends React.Component {
     constructor(props) {
         super(props)
+        this.Delete = this.Delete.bind(this);
     }
-    Delete(id) {
+    Delete() {
         const formData = new FormData();
-        formData.append('ID', id);
+        formData.append('ID', this.props.ID);
         fetch('api/Project/DeleteProject', {
             method: "Post",
             body: formData,

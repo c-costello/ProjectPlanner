@@ -19,7 +19,7 @@ export class ViewProjects extends React.Component {
                         <p><span>Description:</span> {project.description} </p>
                         <p><span>Final Due Date:</span> {project.finalDueDate} </p>
                         <p><span>ID:</span> {project.id} </p>
-                        <DeleteProject Delete={project.id} />    
+                        <DeleteProject ID={project.id} />    
                 </div>                    
                 )}
             </div>
