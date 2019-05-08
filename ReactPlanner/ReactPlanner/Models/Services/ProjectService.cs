@@ -33,9 +33,11 @@ namespace ReactPlanner.Models.Services
 
         }
 
-        public Task<Project> EditProject(Project project)
+        public async Task<Project> EditProject(Project project)
         {
-            throw new NotImplementedException();
+            _context.Projects.Update(project);
+            await _context.SaveChangesAsync();
+            return project;
         }
 
         public async Task<IEnumerable<Project>> GetAllProjects()
