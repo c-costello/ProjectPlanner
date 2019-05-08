@@ -48,9 +48,10 @@ namespace ReactPlanner.Models.Services
             return userProjects;
         }
 
-        public Task<Project> GetProjectByID(int id)
+        public async Task<Project> GetProjectByID(int id)
         {
-            throw new NotImplementedException();
+            Project project = await _context.Projects.FirstOrDefaultAsync(p => p.ID == id);
+            return project;
         }
     }
 }
