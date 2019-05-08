@@ -8,7 +8,7 @@ export class ViewProjects extends React.Component {
             .then(response => response.json())
             .then(data => { this.setState({ projects: data, loading: false }) });
     }
-    renderProject(projects) {
+    static renderProject(projects) {
         return (
             <div>
             <h3> Current Projects </h3>
@@ -24,7 +24,7 @@ export class ViewProjects extends React.Component {
         )
     };
     render() {
-        let contents = ViewProject.renderProject(this.state.projects);
+        let contents = ViewProjects.renderProject(this.state.projects);
         return {contents};
     }
 }
