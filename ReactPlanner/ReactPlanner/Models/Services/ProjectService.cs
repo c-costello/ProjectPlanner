@@ -25,9 +25,12 @@ namespace ReactPlanner.Models.Services
 
         }
 
-        public Task DeleteProjectById(int id)
+        public async Task DeleteProjectById(int id)
         {
-            throw new NotImplementedException();
+            Project project = await GetProjectByID(id);
+            _context.Projects.Remove(project);
+            await _context.SaveChangesAsync();
+
         }
 
         public Task<Project> EditProject(Project project)
