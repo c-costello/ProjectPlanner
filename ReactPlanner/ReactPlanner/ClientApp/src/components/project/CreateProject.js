@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
+import { ProjectForm } from './ProjectForm';
 
-
-export class Projects extends React.Component {
+export class CreateProject extends React.Component {
     constructor(props) {
         super(props)
     }
