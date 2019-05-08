@@ -4,6 +4,7 @@ import { ProjectForm } from './ProjectForm';
 export class CreateProject extends React.Component {
     constructor(props) {
         super(props)
+        this.sendData = this.sendData.bind(this);
     }
     async sendData(project) {
         const url = 'api/Project/CreateProject';
