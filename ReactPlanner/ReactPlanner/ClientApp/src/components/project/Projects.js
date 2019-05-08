@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
 import { CreateProject } from './CreateProject';
+import { ViewProjects } from './ViewProjects';
 
 
 export class Projects extends React.Component {
@@ -8,6 +9,11 @@ export class Projects extends React.Component {
     }
 
     render() {
-        return (<CreateProject/>);
+        return (
+            <div>
+                <ViewProjects/>
+                <CreateProject />
+            </div>
+        );
     }
 }
