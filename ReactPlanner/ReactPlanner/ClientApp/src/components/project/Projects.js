@@ -1,4 +1,6 @@
 ﻿import React, { Component } from 'react';
+import { CreateProject } from './CreateProject';
+
 
 export class Projects extends React.Component {
     constructor(props) {
@@ -6,6 +8,6 @@ export class Projects extends React.Component {
     }
 
     render() {
-        return (<p> Project Page Sample Text </p>);
+        return (<CreateProject/>);
     }
 }
