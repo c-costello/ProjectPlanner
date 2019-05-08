@@ -6,6 +6,6 @@ export class Projects extends React.Component {
     }
 
     render() {
-        return ();
+        return (<p> Project Page Sample Text </p>);
     }
 }
