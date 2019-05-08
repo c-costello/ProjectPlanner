@@ -13,6 +13,7 @@ export class CreateProject extends React.Component {
         formData.append('Description', project.Description);
         formData.append('Color', project.Color);
         formData.append('FinalDueDate', project.FinalDueDate);
+        console.log(formData);
         await fetch(url, {
             method: "POST",
             body: formData
