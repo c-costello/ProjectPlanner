@@ -10,8 +10,10 @@ export class Projects extends React.Component {
 
     render() {
         return (
-            <ViewProjects/>
-            <CreateProject />
+            <div>
+                <ViewProjects/>
+                <CreateProject />
+            </div>
         );
     }
 }
