@@ -41,9 +41,11 @@ namespace ReactPlanner.Models.Services
             return projects;
         }
 
-        public Task<IEnumerable<Project>> GetAllUserProjects(string user)
+        public async Task<IEnumerable<Project>> GetAllUserProjects(string user)
         {
-            throw new NotImplementedException();
+            IEnumerable<Project> allProjects = await GetAllProjects();
+            IEnumerable<Project> userProjects = allProjects.Where(p => p.User == user);
+            return userProjects;
         }
 
         public Task<Project> GetProjectByID(int id)
