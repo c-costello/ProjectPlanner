@@ -1,4 +1,5 @@
-﻿using ReactPlanner.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using ReactPlanner.Data;
 using ReactPlanner.Models.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -34,9 +35,10 @@ namespace ReactPlanner.Models.Services
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Project>> GetAllProjects()
+        public async Task<IEnumerable<Project>> GetAllProjects()
         {
-            throw new NotImplementedException();
+            var projects = await _context.Projects.ToListAsync();
+            return projects;
         }
 
         public Task<IEnumerable<Project>> GetAllUserProjects(string user)
