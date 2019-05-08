@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ReactPlanner.Models;
 using ReactPlanner.Models.Interfaces;
+using ReactPlanner.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,22 @@ namespace ReactPlanner.Controllers
         public ProjectController(IProject context)
         {
             _context = context;
+        }
+
+        [HttpPost("[action]")]
+        public async Task<Project> CreateProject(ProjectViewModel pvm)
+        {
+            string user = User.Identity.Name;
+            Project project = new Project()
+            {
+                User = user,
+                Title = pvm.Title,
+                Description = pvm.Description,
+                Color = pvm.Color,
+                FinalDueDate = pvm.FinalDueDate
+            };
+            await _context.CreateProject(project);
+            return project;
         }
     }
 }
