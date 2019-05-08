@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ReactPlanner.Data;
 using ReactPlanner.Models;
+using ReactPlanner.Models.Interfaces;
+using ReactPlanner.Models.Services;
 
 namespace ReactPlanner
 {
@@ -40,6 +42,8 @@ namespace ReactPlanner
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            services.AddScoped<IProject, ProjectService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
