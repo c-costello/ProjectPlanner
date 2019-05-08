@@ -41,5 +41,12 @@ namespace ReactPlanner.Controllers
             var projects = await _context.GetAllUserProjects(User.Identity.Name);
             return projects.ToArray();
         }
+
+        [HttpPost("[action]")]
+        public async Task<DeleteViewModel> DeleteProject(DeleteViewModel dvm)
+        {
+            await _context.DeleteProjectById(dvm.Id);
+            return dvm;
+        }
     }
 }
