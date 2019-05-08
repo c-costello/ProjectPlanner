@@ -7,7 +7,7 @@ export class ProjectForm extends React.Component {
     }
 
     handleForm(e) {
-        e.PreventDefault();
+        e.preventDefault();
         this.props.ProjectData({
             Title: e.target.title.value,
             Description: e.target.description.value,
@@ -26,7 +26,7 @@ export class ProjectForm extends React.Component {
                 <label> Final Due Date </label>
                 <input name="finalDueDate" type="date" required />
                 <label>Color</label>
-                <select name="Color">
+                <select name="color">
                     <option value="0"> Blue </option>
                     <option value="1"> Green </option>
                     <option value="2"> Yellow </option>
