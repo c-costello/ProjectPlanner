@@ -4,7 +4,7 @@ export class ViewProjects extends React.Component {
     constructor(props) {
         super(props)
         this.state = { projects: [], loading: true };
-        fetch('api/Project/GetProjects')
+        fetch('api/Project/GetAllProjects')
             .then(response => response.json())
             .then(data => { this.setState({ projects: data, loading: false }) });
     }
@@ -12,19 +12,21 @@ export class ViewProjects extends React.Component {
         return (
             <div>
             <h3> Current Projects </h3>
-            {projects.map(project => 
-                <div>
-                    <p><span>Title:</span> {project.Title} </p>
-                    <p><span>Description:</span> {project.Description} </p>
-                    <p><span>Final Due Date:</span> {project.FinalDueDate} </p>
-                    <p><span>ID:</span> {project.ID} </p>
+                {projects.map(project =>
+                    <div key={project.id}>
+                    <p><span>Title:</span> {project.title} </p>
+                    <p><span>Description:</span> {project.description} </p>
+                    <p><span>Final Due Date:</span> {project.finalDueDate} </p>
+                    <p><span>ID:</span> {project.id} </p>
                 </div>                    
                 )}
             </div>
         )
     };
     render() {
-        let contents = ViewProjects.renderProject(this.state.projects);
-        return {contents};
+        let contents = this.state.loading
+            ? <p><em>Loading...</em></p>
+            : ViewProjects.renderProject(this.state.projects);
+        return <div>{contents}</div>;
     }
 }

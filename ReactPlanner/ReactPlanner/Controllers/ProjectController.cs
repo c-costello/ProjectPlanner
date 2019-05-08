@@ -34,5 +34,12 @@ namespace ReactPlanner.Controllers
             await _context.CreateProject(project);
             return project;
         }
+
+        [HttpGet("[action]")]
+        public async Task<Project[]> GetAllProjects()
+        {
+            var projects = await _context.GetAllUserProjects(User.Identity.Name);
+            return projects.ToArray();
+        }
     }
 }
